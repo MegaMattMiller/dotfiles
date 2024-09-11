@@ -1,0 +1,40 @@
+alias src="source ~/.zshrc"
+alias editrc="code ~/.zshrc"
+alias cls="clear"
+alias apps="cd ~/Git/apps/"
+alias libs="cd ~/Git/libs/"
+alias webserve="webdev serve"
+alias dev="npm run dev"
+alias lookoverthar="ls -a"
+alias skedaddle="clear"
+alias gitonout="git fetch -p"
+
+report() {
+  cd ~/Git/
+  git standup -f -m 3 -d 14 -s
+}
+
+reportAll() {
+  cd ~/Git/
+  git standup -f -m 3 -d 14 -s -a "all"
+}
+
+setupGlobalNpmPackages() {
+  npm i -g git-standup
+}
+
+eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/MegaMattMiller/oh-my-posh-theme/main/theme.omp.json')"
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export PATH="/Applications/Sublime Merge.app/Contents/SharedSupport/bin:$PATH"
+export PUB_HOSTED_URL=http://pub.quavermusic.com:50004
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+# fnm
+FNM_PATH="/Users/MattMQ1521/Library/Application Support/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/Users/MattMQ1521/Library/Application Support/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+eval "$(fnm env --use-on-cd --shell zsh)"
