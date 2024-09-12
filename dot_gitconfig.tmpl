@@ -1,5 +1,14 @@
+{{- if eq .chezmoi.os "darwin" }}
 [credential]
 	helper = store
+{{- end}}
+{{- if eq .chezmoi.hostname "Matts-Custom-Desktop" }}
+[core]
+	editor = \"C:\\Users\\dokoe\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
+[include]
+  path = "~/git/gitAliases/gitAliases.txt"
+{{- end}}
+
 [user]
 	name = {{ .name | quote}}
 	email = {{ .email | quote}}
