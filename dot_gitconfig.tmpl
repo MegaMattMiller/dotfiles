@@ -16,13 +16,25 @@
 [core]
 	sshcommand = C:/Windows/System32/OpenSSH/ssh.exe
 {{- end}}
+{{- if ne .chezmoi.os "linux"}}
 [user]
 	name = {{ .name | quote}}
 	email = {{ .email | quote}}
-{{- if ne .chezmoi.hostname "MattM1521" }}
+{{- end}}
+{{- if eq .chezmoi.os "linux"}}
+[user]
+	name = {{ .name }}
+	email = {{ .email }}
+{{- end }}
+{{- if ne .chezmoi.hostname "MattM1521"}}
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+{{- end}}
+{{- if eq .chezmoi.os "linux" }}
+[credential]
+	helper = cache --timeout=86400
+
 {{- end}}
