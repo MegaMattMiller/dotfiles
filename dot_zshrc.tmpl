@@ -11,6 +11,9 @@ alias gitonout="git fetch -p"
 
 eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/MegaMattMiller/oh-my-posh-theme/main/theme.omp.json')"
 
+ZSH_DISABLE_COMPFIX="true"
+ZSH_THEME="agnoster"
+
 {{- if eq .chezmoi.hostname "mmiller-MacBook-Pro" }}
 report() {
   cd ~/Git/
@@ -42,4 +45,21 @@ fi
 
 eval "$(fnm env --use-on-cd --shell zsh)"
 {{- end }}
+
+{{- if eq .chezmoi.hostname "Matts-iMac" }}
+plugins=(
+git
+macos
+bundler
+dotenv
+deno
+)
+
+export PATH=$PATH:/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin
+export PATH=$PATH:/Applications/Sublime\ Text.app/Contents/SharedSupport/bin
+eval $(thefuck --alias)
+
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+{{- end}}
 
