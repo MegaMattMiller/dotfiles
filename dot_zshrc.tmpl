@@ -65,3 +65,29 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 {{- end}}
 
+{{- if eq .chezmoi.hostname "Matts-MacBook-Pro" }}
+plugins=(
+git
+macos
+bundler
+dotenv
+deno
+)
+
+export PATH=$PATH:/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin
+export PATH=$PATH:/Applications/Sublime\ Text.app/Contents/SharedSupport/bin
+export PATH=$PATH:/opt/homebrew/bin
+eval $(thefuck --alias)
+
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# fnm
+FNM_PATH="/Users/MattMQ1521/Library/Application Support/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/Users/MattMQ1521/Library/Application Support/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+eval "$(fnm env --use-on-cd --shell zsh)"
+{{- end}}
