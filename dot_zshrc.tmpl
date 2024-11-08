@@ -11,6 +11,7 @@ alias lookoverthar="ls -a"
 alias skedaddle="clear"
 alias gitonout="git fetch -p"
 
+export PATH=$PATH:/opt/homebrew/bin
 eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/MegaMattMiller/oh-my-posh-theme/main/theme.omp.json')"
 
 ZSH_DISABLE_COMPFIX="true"
@@ -76,7 +77,6 @@ deno
 
 export PATH=$PATH:/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin
 export PATH=$PATH:/Applications/Sublime\ Text.app/Contents/SharedSupport/bin
-export PATH=$PATH:/opt/homebrew/bin
 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
