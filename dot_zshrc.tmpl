@@ -67,6 +67,9 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 {{- end}}
 
 {{- if eq .chezmoi.hostname "Matts-MacBook-Pro" }}
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/Users/matt/.zsh/completions:"* ]]; then export FPATH="/Users/matt/.zsh/completions:$FPATH"; fi
+
 plugins=(
 git
 macos
@@ -91,4 +94,9 @@ fi
 eval "$(fnm env --use-on-cd --shell zsh)"
 
 alias github="cd ~/Documents/github"
+
+. "/Users/matt/.deno/env"
+# Initialize zsh completions (added by deno install script)
+autoload -Uz compinit
+compinit
 {{- end}}
