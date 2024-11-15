@@ -12,7 +12,6 @@ alias skedaddle="clear"
 alias gitonout="git fetch -p"
 
 export PATH=$PATH:/opt/homebrew/bin
-eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/MegaMattMiller/oh-my-posh-theme/main/theme.omp.json')"
 
 ZSH_DISABLE_COMPFIX="true"
 ZSH_THEME="agnoster"
@@ -50,6 +49,8 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 {{- end }}
 
 {{- if eq .chezmoi.hostname "Matts-iMac" }}
+eval "$(oh-my-posh init zsh --config '/Users/matt/Documents/github/oh-my-posh-theme/theme.omp.json')"
+
 plugins=(
 git
 macos
@@ -67,6 +68,8 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 {{- end}}
 
 {{- if eq .chezmoi.hostname "Matts-MacBook-Pro" }}
+eval "$(oh-my-posh init zsh --config '/Users/matt/Documents/github/oh-my-posh-theme/theme.omp.json')"
+
 # Add deno completions to search path
 if [[ ":$FPATH:" != *":/Users/matt/.zsh/completions:"* ]]; then export FPATH="/Users/matt/.zsh/completions:$FPATH"; fi
 
