@@ -17,6 +17,9 @@ ZSH_DISABLE_COMPFIX="true"
 ZSH_THEME="agnoster"
 
 {{- if eq .chezmoi.hostname "mmiller-MacBook-Pro" }}
+
+eval "$(oh-my-posh init zsh --config '/Users/MattMQ1521/Git/utils/oh-my-posh-theme/theme.omp.json')"
+
 report() {
   cd ~/Git/
   git standup -f -m 3 -d 14 -s
@@ -31,7 +34,6 @@ setupGlobalNpmPackages() {
   npm i -g git-standup
 }
 
-eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/MegaMattMiller/oh-my-posh-theme/main/theme.omp.json')"
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
